@@ -1,0 +1,324 @@
+*{margin: 0;padding: 0;}
+ul{list-style: none;}
+a{text-decoration: none; color: inherit;}
+@font-face {
+    font-family: 'ChungjuKimsaeng';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/ChungjuKimSaengTTF.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
+
+#wrap {
+    width: 1920px; /* 1920px 고정보다는 100%가 안전합니다 */
+    margin: 0 auto;
+}
+body{
+    overflow-x: hidden;
+}
+
+.top-notice {
+    background-color: #1C3F66;
+    color: #F4F4F2;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 기본 레이아웃 */
+#header {
+    width: 1920px;
+    height: px;
+    margin: 0 auto;
+    position: relative;
+    background: #1C3F66;
+    /* display: flex; */
+    /* align-items: center; */
+}
+
+.header-inner {
+    display: flex;             
+    justify-content: space-between; /* ★ 로고는 왼쪽 끝, 로그인은 오른쪽 끝으로 */
+    align-items: center;       
+    width: 100%;               /* 1600px 대신 100%로 변경 */
+    max-width: 1920px;         /* 최대 너비 제한 */
+    /* margin: 0 auto;            중앙 배치 */
+    height: 100%;
+}
+
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+
+
+
+
+
+/* --- 메인 메뉴 레이아웃 --- */
+.main-menu {
+    display: flex;
+    white-space: nowrap;
+    height: 100%;
+}
+
+.main-menu > li {
+    padding: 0 20px;
+    /* 서브메뉴가 화면 전체 너비(1920px)를 기준으로 나오게 하려면 li의 position은 기본값이어야 함 */
+}
+
+.main-menu > li > a {
+    color: #F4F4F2;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 100px; /* 헤더 높이와 맞춰 중앙 정렬 */
+    display: block;
+    position: relative; /* 강조 선(::after)의 기준점 */
+    transition: color 0.3s ease; /* 글자색 변화 부드럽게 */
+}
+
+/* ★ 메인 메뉴 호버: 글자색 변경 + 아래 강조선 추가 */
+.main-menu > li:hover > a {
+    color: #F4F4F2; /* 이미지 느낌의 보라색 (또는 노란색 #FFD700) */
+}
+
+.main-menu > li:hover > a::after {
+    content: "";
+    position: absolute;
+    bottom: 30px; /* 선의 높이 위치 */
+    left: 0;
+    width: 100%;
+    height: 4px; /* 선 두께 */
+    background-color: #fff; /* 강조 선 색상 */
+    transition: all 0.3s;
+}
+
+/* ★ 개별 가로 서브메뉴 바 설정 */
+.individual-sub {
+    position: absolute;
+ /* 헤더 바로 아래 */
+    left: 0;
+    width: 1920px; /* 전체 너비 고정 */
+    background-color: #F4F4F2; /* 서브바 배경색 */
+    height: 0; /* 평소엔 높이 0 */
+    overflow: hidden;
+    transition: height 0.2s ease-in; /* 슥- 내려오는 효과 */
+    z-index: 1000;
+}
+
+/* ★ 마우스 올린 li 안의 서브메뉴만 높이 부여 */
+.main-menu > li:hover .individual-sub {
+    height: 45px; /* 가로 한 줄 높이 */
+}
+
+/* 서브메뉴 내부 리스트 가로 정렬 */
+.sub-list {
+    display: flex;
+    width: 1400px; /* 콘텐츠 영역 폭 */
+    margin: 0 260px;
+    height: 100%;
+    align-items: center;
+    padding-left: 480px; /* 로고 위치 등을 고려한 시작 지점 */
+}
+
+.sub-list li {
+    color: #1C3F66; /* 기본 글자색 */
+    margin-right: 40px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+/* ★ 서브메뉴 글자 호버: 색상 변경 + 밑줄 */
+.sub-list li:hover {
+    color: #16304f; /* 더 선명한 검은색 */
+    text-decoration: none;
+    border-bottom: 3px solid currentColor;
+    padding-bottom: 4px;
+    font-weight: bold;
+}
+
+/* 헤더 내부 정렬 */
+.header-inner {
+    display: flex;
+    justify-content: space-between; /* 로고, 메뉴, 로그인을 균등 분할 배치 */
+    align-items: center;
+    width: 1600px; /* 실제 콘텐츠 폭 */
+    margin: 0 auto;
+    height: 100%;
+}
+
+/* 메뉴와 로그인 사이의 간격을 더 넓히고 싶다면 추가 */
+.navbar {
+    margin-left: 200px; /* 로고와 메뉴 사이 간격 */
+    flex-grow: 1;      /* 메뉴 영역이 남는 공간을 차지하게 함 */
+}
+
+/* 로그인 영역 스타일 */
+
+.util-menu {
+    white-space: nowrap; 
+}
+
+.util-menu ul {
+    display: flex;
+    padding-right: 200px;
+    align-items: center;
+    list-style: none;
+}
+
+/* 기본 글자 스타일 */
+.util-menu ul li a {
+    color: #F4F4F2;      /* 항상 흰색 유지 */
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;     /* 마우스 올리면 손가락 모양으로 변경 */
+}
+
+/* ★ 마우스를 올렸을 때(Hover) 아무런 변화가 없도록 설정 */
+.util-menu ul li a:hover {
+    color: #F4F4F2;      /* 마우스를 올려도 흰색 그대로 유지 */
+    text-decoration: none; /* 밑줄 등 추가 효과 없음 */
+}
+
+/* 중간의 세로 바 스타일 (|) */
+.util-menu .bar {
+    color: #F4F4F2;
+    margin: 0 10px;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+/* 로그인/회원가입/검색 공통 스타일 */
+.util-menu ul li a {
+    color: #F4F4F2;      /* 항상 흰색 유지 */
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;     /* 마우스 올리면 손가락 모양으로 변경 */
+    display: flex;
+    align-items: center;
+}
+
+
+
+.nav-bar{
+    display: block;
+    margin: 0 auto;
+}
+.container{
+    margin-bottom: 30px;
+}
+.sectionabout{
+    margin-bottom: 30px;
+}
+.container main-content1{
+    margin-bottom: 50px;
+}
+.container main-content2{
+    margin-bottom: 50px;
+}
+.container main-content3{
+    margin-bottom: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------마지막 푸터------------------------------- */
+.footer {
+    background-color: #1e3a5a;
+    /* 이미지의 짙은 네이비 배경색 */
+    color: #F4F4F2;
+    padding: 40px 0;
+    font-size: 14px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 로고와 메뉴 배치 */
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    font-size: 29px;
+    font-family: 'ChungjuKimsaeng';
+    font-weight: bold;
+}
+
+.footer-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-nav a {
+    font-size: 19px;
+    color: #F4F4F2;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: #F4F4F2;
+}
+
+.address-info{
+    margin-bottom: 10px;
+}
+
+/* 주소 및 셀렉트 박스 배치 */
+.footer-bottom {
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #1A1A1A;
+}
+
+.address-info p {
+    color: #F4F4F2;
+    line-height: 1.8;
+
+}
+
+/* 셀렉트 박스 스타일 */
+.family-site select {
+    background-color: #162d46;
+    color: #F4F4F2;
+    border: none;
+    padding: 8px 15px;
+    width: 200px;
+    outline: none;
+}
+
+.copyright {
+    margin-top: 20px;
+    color: #F4F4F2;
+    font-size: 12px;
+}

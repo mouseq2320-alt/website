@@ -32,7 +32,39 @@ a {
 
 body {
     overflow-x: hidden;
+
 }
+
+/* 기존 코드는 그대로 두시고 아래 내용만 추가하세요 */
+body::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%); /* 중앙 정렬 */
+    
+    /* 요청하신 정확한 수치 적용 */
+    width: 1920px;
+    height: 1530px;
+    
+    /* 배경 이미지 설정 */
+    background-image: url('../images/main_6.jpg'); /* 본인의 이미지 경로 */
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% 100%; /* 지정한 1920x1530에 이미지를 꽉 맞춤 */
+    
+    /* 레이어 순서 및 기타 설정 */
+    z-index: -1; /* 콘텐츠 뒤로 보내기 */
+    pointer-events: none; /* 클릭 방해 금지 */
+}
+
+/* 배경이 잘리지 않도록 body의 최소 높이 확보 */
+body {
+    min-height: 1530px;
+    position: relative;
+    margin: 0;
+}
+
 
 .top-notice {
     background-color: #1C3F66;
@@ -321,9 +353,10 @@ body {
 
 .exhibition {
     max-width: 1220px;
-    margin: 0 auto;
-
+    margin: 0 auto; 
 }
+
+
 
 .bold-arrow {
     font-weight: bold;
